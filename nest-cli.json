@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/nextjsvietnam-be/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/nextjsvietnam-be/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/nextjsvietnam-be",
+  "projects": {
+    "nextjsvietnam-be": {
+      "type": "application",
+      "root": "apps/nextjsvietnam-be",
+      "entryFile": "main",
+      "sourceRoot": "apps/nextjsvietnam-be/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/nextjsvietnam-be/tsconfig.app.json"
+      }
+    },
+    "gateways": {
+      "type": "application",
+      "root": "apps/gateways",
+      "entryFile": "main",
+      "sourceRoot": "apps/gateways/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/gateways/tsconfig.app.json"
+      }
+    }
+  }
+}
