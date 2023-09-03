@@ -15,6 +15,6 @@ export class Configs extends Model {
   })
   type: TCONFIG;
 
-  @Column(DataTypes.STRING(5000))
+  @Column(DataTypes.TEXT)
   value: string;
 }

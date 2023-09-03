@@ -22,7 +22,7 @@ export class Tokens extends Model {
 
   @Unique
   @AllowNull(false)
-  @Column(DataType.STRING(2048))
+  @Column(DataType.TEXT)
   refreshToken: string;
 
   @AllowNull(false)

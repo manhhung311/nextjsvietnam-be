@@ -22,7 +22,7 @@ export class OldTokens extends Model {
 
   @Unique
   @AllowNull(false)
-  @Column(DataType.STRING(2048))
+  @Column(DataType.TEXT)
   refreshToken: string;
 
   @ForeignKey(() => Users)
