@@ -49,6 +49,7 @@
     "class-validator": "^0.13.2",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
     "google-auth-library": "^8.7.0",
     "install": "^0.13.0",
     "mysql2": "^2.3.3",
@@ -108,7 +109,8 @@
       "<rootDir>/libs/"
     ],
     "moduleNameMapper": {
-      "^@app/common(|/.*)$": "<rootDir>/libs/common/src/$1"
+      "^@app/common(|/.*)$": "<rootDir>/libs/common/src/$1",
+      "^@app/mail(|/.*)$": "<rootDir>/libs/mail/src/$1"
     }
   }
 }

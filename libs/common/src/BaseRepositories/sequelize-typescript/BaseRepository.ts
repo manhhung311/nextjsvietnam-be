@@ -4,7 +4,7 @@ import { IRepository } from '../IRepository';
 export abstract class BaseRepository<M extends Model> implements IRepository {
   constructor(protected model: typeof Model) {}
 
-  public async findById(id: number): Promise<M> {
+  public async findById(id: number | string): Promise<M> {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     return this.model.findByPk(id);
@@ -16,7 +16,7 @@ export abstract class BaseRepository<M extends Model> implements IRepository {
     return this.model.findAll();
   }
 
-  async deleteById(id: number) {
+  async deleteById(id: number | string) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
     const model = await this.model.findByPk(id);

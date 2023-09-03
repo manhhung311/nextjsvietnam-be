@@ -1,0 +1,3 @@
+export enum TCONFIG {
+  PRIVATE_SECCRESS_KEY = 'SECCRESS_KEY',
+}
