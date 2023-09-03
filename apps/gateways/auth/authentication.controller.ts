@@ -18,6 +18,7 @@ import { LoginResponse } from '@app/common/Auth/Responses/login-response';
 import { ApiTags } from '@nestjs/swagger';
 import { RegisterReponse } from '@app/common/Auth/Responses/register-response';
 import { UserRegisterDTO } from '@app/common/Auth/DTO/UserRegisterDTO';
+import { ActivatedDTO } from '@app/common/Auth/DTO/activated.dto';
 
 @ApiTags('Authetication')
 @Controller('auth')
@@ -161,7 +162,7 @@ export class AuthenticationController {
   }
 
   @Post('activated')
-  async activated(@Body() data: { token: string }): Promise<IResponse> {
+  async activated(@Body() data: ActivatedDTO): Promise<IResponse> {
     const request = this.authenticationClient.send({ cmd: 'activated' }, data);
     const response: IResponse = await firstValueFrom(request);
     if (response.statusCode != HttpStatus.OK) {
