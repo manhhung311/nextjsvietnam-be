@@ -14,9 +14,9 @@ import {
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { firstValueFrom } from 'rxjs';
-import { LoginResponse } from '@app/common/auth/Responses/login-response';
+import { LoginResponse } from '@app/common/Auth/Responses/login-response';
 import { ApiTags } from '@nestjs/swagger';
-import { RegisterReponse } from '@app/common/auth/Responses/register-response';
+import { RegisterReponse } from '@app/common/Auth/Responses/register-response';
 import { UserRegisterDTO } from '@app/common/Auth/DTO/UserRegisterDTO';
 
 @ApiTags('Authetication')
