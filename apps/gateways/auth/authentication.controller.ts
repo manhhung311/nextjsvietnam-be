@@ -24,6 +24,7 @@ import { ForgetPasswordResponse } from '@app/common/Auth/Responses/forgetPasswor
 import { ResetPasswordResponse } from '@app/common/Auth/Responses/resetPassword-response';
 import { ActivatedReponse } from '@app/common/Auth/Responses/activated-response';
 import { AccessTokenResponse } from '@app/common/Auth/Responses/accesstoken-response';
+import { LogoutDTO } from '@app/common/Auth/DTO/logout.dto';
 
 @ApiTags('Authetication')
 @Controller('auth')
@@ -191,7 +192,7 @@ export class AuthenticationController {
   }
 
   @Post('logoutAll')
-  async logoutALll(@Body() data: { token: string }): Promise<IResponse> {
+  async logoutALll(@Body() data: LogoutDTO): Promise<IResponse> {
     const request = this.authenticationClient.send({ cmd: 'logoutAll' }, data);
     const response: IResponse = await firstValueFrom(request);
     if (response.statusCode != HttpStatus.OK) {
@@ -207,7 +208,7 @@ export class AuthenticationController {
   }
 
   @Post('logout')
-  async logout(@Body() data: { token: string }): Promise<IResponse> {
+  async logout(@Body() data: LogoutDTO): Promise<IResponse> {
     const request = this.authenticationClient.send({ cmd: 'logoutAll' }, data);
     const response: IResponse = await firstValueFrom(request);
     if (response.statusCode != HttpStatus.OK) {

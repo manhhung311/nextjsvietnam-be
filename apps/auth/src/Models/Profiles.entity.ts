@@ -25,6 +25,10 @@ export class Profile extends Model {
   @Column
   address: string;
 
+  @AllowNull(true)
+  @Column(DataType.TEXT)
+  metadata?: string;
+
   @Column
   avatar: string;
 
