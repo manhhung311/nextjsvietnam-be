@@ -31,6 +31,7 @@ import { ConfigsRepository } from '../Repositories/ConfigsRepository';
 import { TCONFIG } from '@app/common/Types/TConfig';
 import { Configs } from '../Models/Configs.entity';
 import { LoadDB } from '../config/database.providers';
+import { AccessTokenResponse } from '@app/common/Auth/Responses/accesstoken-response';
 @Injectable()
 export class AuthenticationService {
   private userRepository: UserRepository;
@@ -132,7 +133,7 @@ export class AuthenticationService {
     user.open2FA = true;
     user.key2FA = user.key2FA ? user.key2FA : secret;
     await this.userRepository.update(user);
-    const otp = await authenticator.keyuri(username, 'ecommerce', user.key2FA);
+    const otp = await authenticator.keyuri(username, 'nextjsvietnam', user.key2FA);
     const qrcode = await QRcode.toDataURL(otp);
     return {
       statusCode: HttpStatus.CREATED,
@@ -418,7 +419,7 @@ export class AuthenticationService {
     };
   }
 
-  async getToken(t: string) {
+  async getToken(t: string): Promise<AccessTokenResponse> {
     const token = await this.findToken(t);
     if (token) {
       const decode = await this.verifyToken(t);
@@ -431,17 +432,18 @@ export class AuthenticationService {
           otp: user.open2FA,
         };
         return {
-          statusCode: HttpStatus.OK,
+          statusCode: HttpStatus.CREATED,
           message: 'OK',
           data: {
             user: {
               ...iuser,
-              token: {
-                accessToken: await this.generateAccessToken(iuser),
-                refreshToken: t,
-              },
+            },
+            token: {
+              accessToken: await this.generateAccessToken(iuser),
+              refreshToken: t,
             },
           },
+          errors: null,
         };
       }
     }
@@ -449,6 +451,7 @@ export class AuthenticationService {
       statusCode: HttpStatus.UNAUTHORIZED,
       message: 'Mã Token hết hạn',
       data: null,
+      errors: null,
     };
   }
 

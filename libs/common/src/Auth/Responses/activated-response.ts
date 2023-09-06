@@ -6,7 +6,7 @@ export class ActivatedReponse implements IResponse {
   @ApiProperty({ example: 201 })
   statusCode: number;
 
-  @ApiProperty({ example: 'user login success' })
+  @ApiProperty({ example: 'activated success' })
   message: string;
 
   @ApiProperty({
