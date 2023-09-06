@@ -3,7 +3,6 @@ import {
   Column,
   Model,
   PrimaryKey,
-  Unique,
   AllowNull,
   ForeignKey,
   BelongsTo,
@@ -20,7 +19,6 @@ export class Tokens extends Model {
   @Column
   id: number;
 
-  @Unique
   @AllowNull(false)
   @Column(DataType.TEXT)
   refreshToken: string;
