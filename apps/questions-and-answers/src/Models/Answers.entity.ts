@@ -7,9 +7,11 @@ import {
   AutoIncrement,
   ForeignKey,
   BelongsTo,
+  HasMany,
 } from 'sequelize-typescript';
 import { DataTypes } from 'sequelize';
 import { Questions } from './Questions.entity';
+import { ChildAnswers } from './ChildAnswers.entity';
 
 @Table
 export class Answers extends Model {
@@ -31,4 +33,15 @@ export class Answers extends Model {
 
   @BelongsTo(() => Questions)
   question: Questions;
+
+  @HasMany(() => ChildAnswers)
+  childAnswers: ChildAnswers[];
+
+  @AllowNull(true)
+  @ForeignKey(() => ChildAnswers)
+  @Column
+  childAnswerId: number;
+
+  @BelongsTo(() => ChildAnswers)
+  childAnswer: ChildAnswers;
 }

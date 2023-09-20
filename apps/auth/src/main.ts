@@ -8,12 +8,12 @@ async function bootstrap() {
     options: {
       host: process.env.HOST,
       port: Number.parseInt(process.env.AUTH_PORT),
-      tlsOptions: {
-        ca: '',
-        cert: '',
-        key: '',
-        requestCert: true,
-      },
+      // tlsOptions: {
+      //   ca: '',
+      //   cert: '',
+      //   key: '',
+      //   requestCert: true,
+      // },
     },
   });
   await app.listen();

@@ -1,13 +1,4 @@
-import {
-  Table,
-  Column,
-  Model,
-  PrimaryKey,
-  AllowNull,
-  AutoIncrement,
-  ForeignKey,
-  BelongsTo,
-} from 'sequelize-typescript';
+import { Table, Column, Model, PrimaryKey, AllowNull, AutoIncrement, HasMany } from 'sequelize-typescript';
 import { DataTypes } from 'sequelize';
 import { Questions } from './Questions.entity';
 
@@ -22,10 +13,6 @@ export class Categorys extends Model {
   @Column(DataTypes.TEXT)
   data: string;
 
-  @ForeignKey(() => Questions)
-  @Column
-  questionId: number;
-
-  @BelongsTo(() => Questions)
-  question: Questions;
+  @HasMany(() => Questions)
+  questions: Questions[];
 }

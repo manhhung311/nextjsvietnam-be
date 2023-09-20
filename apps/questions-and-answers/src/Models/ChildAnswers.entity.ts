@@ -1,5 +1,16 @@
-import { Table, Column, Model, PrimaryKey, AllowNull, AutoIncrement } from 'sequelize-typescript';
+import {
+  Table,
+  Column,
+  Model,
+  PrimaryKey,
+  AllowNull,
+  AutoIncrement,
+  BelongsTo,
+  ForeignKey,
+  HasMany,
+} from 'sequelize-typescript';
 import { DataTypes } from 'sequelize';
+import { Answers } from './Answers.entity';
 
 @Table
 export class ChildAnswers extends Model {
@@ -14,4 +25,14 @@ export class ChildAnswers extends Model {
 
   @Column(DataTypes.TEXT)
   userId: string;
+
+  @ForeignKey(() => Answers)
+  @Column
+  answerId: number;
+
+  @BelongsTo(() => Answers)
+  answer: Answers;
+
+  @HasMany(() => Answers)
+  answers: Answers[];
 }

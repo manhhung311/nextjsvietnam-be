@@ -1,4 +1,14 @@
-import { Table, Column, Model, PrimaryKey, AllowNull, AutoIncrement, HasOne, HasMany } from 'sequelize-typescript';
+import {
+  Table,
+  Column,
+  Model,
+  PrimaryKey,
+  AllowNull,
+  AutoIncrement,
+  HasMany,
+  ForeignKey,
+  BelongsTo,
+} from 'sequelize-typescript';
 import { DataTypes } from 'sequelize';
 import { Categorys } from './Categorys.entity';
 import { Stars } from './Stars.entity';
@@ -15,21 +25,24 @@ export class Questions extends Model {
   @Column(DataTypes.TEXT)
   data: string;
 
+  @AllowNull(true)
   @Column(DataTypes.TEXT)
-  userId: string;
+  userId?: string;
 
-  starsId: number[];
-
-  categoryId: number;
-
-  answersId: number[];
-
-  @HasOne(() => Categorys)
-  category: Categorys;
+  @AllowNull(true)
+  @Column(DataTypes.TEXT)
+  name?: string;
 
   @HasMany(() => Stars)
-  start: Stars[];
+  stars: Stars[];
 
   @HasMany(() => Answers)
   answers: Answers[];
+
+  @ForeignKey(() => Categorys)
+  @Column
+  categoryId: number;
+
+  @BelongsTo(() => Categorys)
+  category: Categorys;
 }

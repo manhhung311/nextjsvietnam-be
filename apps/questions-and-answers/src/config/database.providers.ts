@@ -1,13 +1,10 @@
 import { ConfigService } from '@nestjs/config';
 import { Sequelize } from 'sequelize-typescript';
-import { Cookies } from '../Models/Cookies.entity';
-import { MetaData } from '../Models/MetaData.entity';
-import { OldTokens } from '../Models/OldTokens.entity';
-import { Profile } from '../Models/Profiles.entity';
-import { Roles } from '../Models/Roles.entity';
-import { Tokens } from '../Models/Tokens.entity';
-import { Users } from '../Models/Users.entity';
-import { Configs } from '../Models/Configs.entity';
+import { Answers } from '../Models/Answers.entity';
+import { Categorys } from '../Models/Categorys.entity';
+import { ChildAnswers } from '../Models/ChildAnswers.entity';
+import { Questions } from '../Models/Questions.entity';
+import { Stars } from '../Models/Stars.entity';
 
 export const databaseProviders = [
   {
@@ -22,14 +19,9 @@ export const databaseProviders = [
         password: configService.get<string>('DB_PASS'),
         database: configService.get<string>('DB_DATABASE'),
       });
-      sequelize.addModels([Cookies, MetaData, OldTokens, Profile, Roles, Tokens, Users, Configs]);
+      sequelize.addModels([Answers, Categorys, ChildAnswers, Questions, Stars]);
       await sequelize.sync();
-      LoadDB.check = true;
       return sequelize;
     },
   },
 ];
-
-export class LoadDB {
-  static check: boolean = false;
-}

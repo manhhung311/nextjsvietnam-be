@@ -18,12 +18,15 @@ export class Stars extends Model {
   @Column
   id: number;
 
-  @AllowNull(false)
+  @AllowNull(true)
   @Column(DataTypes.TEXT)
   data: string;
 
+  @AllowNull(true)
+  @Column(DataTypes.INTEGER)
+  star: number;
+
   @ForeignKey(() => Questions)
-  @Column
   questionId: number;
 
   @BelongsTo(() => Questions)
