@@ -45,6 +45,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/mail/tsconfig.lib.json"
       }
+    },
+    "questions-and-answers": {
+      "type": "application",
+      "root": "apps/questions-and-answers",
+      "entryFile": "main",
+      "sourceRoot": "apps/questions-and-answers/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/questions-and-answers/tsconfig.app.json"
+      }
     }
   }
 }

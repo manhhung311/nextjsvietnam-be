@@ -63,7 +63,8 @@
     "sequelize": "^6.28.0",
     "sequelize-cli": "^6.5.2",
     "sequelize-typescript": "^2.1.5",
-    "swagger": "^0.7.5"
+    "swagger": "^0.7.5",
+    "typeorm": "^0.3.17"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",

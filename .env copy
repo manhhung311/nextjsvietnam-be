@@ -1,0 +1,16 @@
+HOST=localhost
+AUTH_PORT=3001
+
+HOST_FONT=https://nextjsvietnam.org
+
+SERVER_MAIL=Yandex
+USER_MAIL=support@nextjsvietnam.org
+PASS_MAIL=1234@Next
+
+
+DB=mysql
+DB_HOST=localhost
+DB_PORT_AUTH=3307
+DB_DATABASE=nextjsvietnam
+DB_USER=root
+DB_PASS=NextjsVN@
