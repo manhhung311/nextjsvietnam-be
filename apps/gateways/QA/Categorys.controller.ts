@@ -4,13 +4,14 @@ import { firstValueFrom } from 'rxjs';
 import { IResponse } from '@app/common/IResponse';
 import { CategorysResponse } from '@app/common/questions-and-answers/Responses/categorys-response';
 import { CategoryCreateResponse } from '@app/common/questions-and-answers/Responses/categorys-create-response';
+import { CreatedCategoryDTO } from '@app/common/questions-and-answers/DTO/createCategory.dto';
 
 @Controller('Categorys')
 export class CategorysController {
   constructor(@Inject('QA') private readonly qaClient: ClientProxy) {}
 
   @Post()
-  async create(@Body('data') data: string): Promise<CategoryCreateResponse> {
+  async create(@Body() data: CreatedCategoryDTO): Promise<CategoryCreateResponse> {
     const request = this.qaClient.send({ cmd: 'create.category' }, data);
     const response: IResponse = await firstValueFrom(request);
     if (response.statusCode != HttpStatus.CREATED) {
