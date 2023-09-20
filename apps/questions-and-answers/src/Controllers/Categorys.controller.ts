@@ -1,6 +1,7 @@
 import { Controller, Get, Post } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
 import { CategorysService } from '../Services/Categorys.service';
+import { CreatedCategoryDTO } from '@app/common/questions-and-answers/DTO/createCategory.dto';
 
 @Controller('')
 export class CategorysController {
@@ -8,9 +9,8 @@ export class CategorysController {
 
   @Post()
   @MessagePattern({ cmd: 'create.category' })
-  async create(data: string) {
-    console.log(data);
-    return this.categorysService.create(data);
+  async create(data: CreatedCategoryDTO) {
+    return this.categorysService.create(data.name);
   }
 
   @Get()
