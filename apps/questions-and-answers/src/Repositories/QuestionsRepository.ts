@@ -23,8 +23,8 @@ export class QuestionsRepository extends BaseRepository<Questions> {
     name: string;
   }) {
     return Questions.findAll({
-      limit: parseInt(limit.toString()),
-      offset: parseInt(offset.toString()),
+      limit,
+      offset,
       where: name ? { name: { [Op.like]: `%${name}%` } } : {},
       include: [
         { model: Stars, where: star ? { star: star } : {}, required: false },

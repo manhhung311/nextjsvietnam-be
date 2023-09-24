@@ -16,7 +16,7 @@ export class QuestionsAndAnswersController {
 
   @Get()
   @MessagePattern({ cmd: 'get.q' })
-  async getQuestions(data: QueryQuestionsDTO) {
+  async getQuestions(data?: QueryQuestionsDTO) {
     return this.questionsService.getQuestions(data);
   }
 }
