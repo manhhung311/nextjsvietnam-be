@@ -1,46 +1,41 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty } from 'class-validator';
-
+import { Type } from 'class-transformer';
 export class QueryQuestionsDTO {
   @ApiProperty({
     example: '',
     description: '1',
   })
-  @IsNotEmpty()
   star?: number;
 
   @ApiProperty({
     example: '',
-    description: 'core',
+    description: 'category',
   })
-  @IsNotEmpty()
-  category: string;
+  category?: string;
 
   @ApiProperty({
     example: '',
     description: 'tiêu đề bài viếts',
   })
-  @IsNotEmpty()
-  title: string;
+  title?: string;
 
   @ApiProperty({
     example: '',
     description: 'tên người đăng',
   })
-  @IsNotEmpty()
-  name: string;
+  name?: string;
 
   @ApiProperty({
     example: '',
     description: '',
   })
-  @IsNotEmpty()
-  limit: number;
+  @Type(() => Number)
+  limit?: number;
 
   @ApiProperty({
     example: '',
-    description: 'tên người đăng',
+    description: '',
   })
-  @IsNotEmpty()
-  offset: number;
+  @Type(() => Number)
+  offset?: number;
 }
