@@ -47,7 +47,7 @@ export class QuestionsService {
     };
   }
 
-  public async getQuestions(query: QueryQuestionsDTO) {
+  public async getQuestions(query?: QueryQuestionsDTO) {
     return {
       statusCode: HttpStatus.OK,
       message: 'OK',

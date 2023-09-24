@@ -30,7 +30,7 @@ export class QuestionsAndAnswersController {
   }
 
   @Get()
-  async getQuestions(@Query() data: QueryQuestionsDTO): Promise<QuestionResponse> {
+  async getQuestions(@Query() data?: QueryQuestionsDTO): Promise<QuestionResponse> {
     const request = this.qaClient.send({ cmd: 'get.q' }, data);
     const response: IResponse = await firstValueFrom(request);
     if (response.statusCode != HttpStatus.OK) {
