@@ -9,11 +9,23 @@ export class QuestionsRepository extends BaseRepository<Questions> {
     super(Questions);
   }
 
-  public getQuetions({ limit, offset, star, category, name }) {
+  public getQuetions({
+    limit,
+    offset,
+    star,
+    category,
+    name,
+  }: {
+    limit: number;
+    offset: number;
+    star: number;
+    category: string;
+    name: string;
+  }) {
     return Questions.findAll({
-      limit,
-      offset,
-      where: name ? { name: { [Op.like]: `${name}` } } : {},
+      limit: parseInt(limit.toString()),
+      offset: parseInt(offset.toString()),
+      where: name ? { name: { [Op.like]: `%${name}%` } } : {},
       include: [
         { model: Stars, where: star ? { star: star } : {}, required: false },
         {
